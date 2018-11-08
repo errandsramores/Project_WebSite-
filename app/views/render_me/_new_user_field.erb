@@ -15,7 +15,7 @@
     <%= f.text_field :birthday, class: 'form-control', placeholder:Spree.t(:birthday) %>
   </div>
   <div class="form-group">
-    <%= f.select :gender, class: 'form-control', placeholder:Spree.t(:gender), [['Male', 'Male'], ['Female', 'Female']] %>
+    <%= f.select :gender, [['Male', 'Male'], ['Female', 'Female']], class: 'form-control', placeholder:Spree.t(:gender) %>
   </div>
   <div class="form-group">
     <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email) %>
