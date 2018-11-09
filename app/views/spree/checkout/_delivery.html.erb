@@ -74,7 +74,7 @@
                 <tr class="stock-item">
                   <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= item.variant.name %></td>
-                  <td class="item-qty" id="demo<%=item.line_item.id%>"><%= item.quantity %></td>
+                  <td class="item-qty"><%= item.quantity %></td>
                   <td class="item-price"><%= display_price(item.variant) %></td>
                   <td>
                       <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
@@ -155,20 +155,20 @@
 <br />
 
 <div class="well form-buttons" data-hook="buttons" >
-  <%= submit_tag Spree.t(:save_and_continue), class: 'btn btn-lg btn-success', id: 'savecontinue-btn' %>
+  <%= submit_tag Spree.t(:continue), class: 'btn btn-lg btn-success', id: 'savecontinue-btn' %>
 </div>
 
 <script>
 function deleteFunction(item) {
-  var divName = $(item).attr("id");
-  var quan = document.getElementById("demo"+divName).val();
-  document.getElementById("demo"+divName).innerHTML = quan;
+  var divName = $(item);
+  // var quan = document.getElementById("demo"+divName).val();
+  // document.getElementById("demo"+divName).innerHTML = quan;
   //$("demo"+divName).val(0)
     //document.getElementsByClassName("btn btn-primary")[0].click();
   // var i = item.parentNode.parentNode.rowIndex;
   //   document.getElementById("myTable").deleteRow(i);
   console.log(divName);
-  console.log(quan);
+  // console.log(quan);
 }
 </script>
 
