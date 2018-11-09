@@ -45,7 +45,7 @@
   </div> -->
   <div class="panel-body" data-hook="shipping_method_inner">
     <div id="methods">
-      <%= order_form.fields_for :shipments do |ship_form| %>
+      <%= form.fields_for :shipments do |ship_form| %>
         <div class="shipment">
           <!-- <h4 class="stock-location" data-hook="stock-location">
             <%= Spree.t(:package_from) %>
@@ -70,9 +70,9 @@
               </tr>
             </thead>
             <tbody>
-              <% ship_form.object.manifest.each do |item , line_item| %>
+              <%= order_form.fields_for :line_items, line_item do |item_form_mobile| %>
                 <tr class="stock-item">
-                  <td class="item-image"><%= mini_image(item.variant) %></td>
+                  <!-- <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= item.variant.name %></td>
                   <td class="item-qty"><%= item.quantity %>
                     <%= ship_form.text_area :special_instructions, cols: 40, rows: 4, class: "form-control" %></td>
@@ -81,7 +81,7 @@
                       <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
                           <span class="glyphicon glyphicon-trash"></span>
                       </button>
-                  </td>
+                  </td> -->
                 </tr>
               <% end %>
             </tbody>
@@ -142,7 +142,6 @@
             </tbody>
           </table>
         </div>
-      <% end %>
     </div>
     <% if Spree::Config[:shipping_instructions] %>
       <p id="minstrs" data-hook>
