@@ -74,8 +74,7 @@
                 <tr class="stock-item">
                   <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= item.variant.name %></td>
-                  <td class="item-qty"><%= item.quantity %>
-                    <%= ship_form.text_field :quantity, class: "form-control"%></td>
+                  <td class="item-qty"><%= item.quantity %></td>
                   <td class="item-price"><%= display_price(item.variant) %></td>
                   <td>
                       <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
@@ -92,7 +91,7 @@
             <% ship_form.object.shipping_rates.reverse_each do |rate| %>
               <li class="list-group-item shipping-method">
                 <label class="method_label">
-                  <%= ship_form.text_area :selected_shipping_rate_id, rate.id, data: { behavior: 'shipping-method-selector', cost: rate.display_cost } %>
+                  <%= ship_form.radio_button :selected_shipping_rate_id, rate.id, data: { behavior: 'shipping-method-selector', cost: rate.display_cost } %>
                   <span class="rate-name"><%= rate.name %></span>
                   <% if rate.name == "Delivered" %>
                     <span class="badge badge-info" id="delivery-fee-msg"><%= "*Delivery fee: ₱70 for the first 1000 and additional ₱25 per succeeding thousand" %></span>
