@@ -74,7 +74,7 @@
                 <tr class="stock-item">
                   <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= item.variant.name %></td>
-                  <td class="item-qty"><%= ship_form.radio_button :selected_shipping_rate_id, rate.id, data: { behavior: 'shipping-method-selector', cost: rate.display_cost } %></td>
+                  <td class="item-qty"><%= item.quantity %></td>
                   <td class="item-price"><%= display_price(item.variant) %></td>
                   <td>
                       <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
@@ -161,14 +161,14 @@
 <script>
 function deleteFunction(item) {
   var divName = $(item).attr("id");
-  // var quan = document.getElementById("demo"+divName).val();
+  var quan = document.getElementById("demo"+divName).value;
   // document.getElementById("demo"+divName).innerHTML = quan;
   //$("demo"+divName).val(0)
     //document.getElementsByClassName("btn btn-primary")[0].click();
   // var i = item.parentNode.parentNode.rowIndex;
   //   document.getElementById("myTable").deleteRow(i);
   console.log(divName);
-  // console.log(quan);
+  console.log(quan);
 }
 </script>
 
