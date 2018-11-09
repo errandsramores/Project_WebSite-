@@ -45,7 +45,7 @@
   </div> -->
   <div class="panel-body" data-hook="shipping_method_inner">
     <div id="methods">
-      <%= form.fields_for :shipments do |ship_form| %>
+      <%= order_form.fields_for :line_items,  line_item do |ship_form| %>
         <div class="shipment">
           <!-- <h4 class="stock-location" data-hook="stock-location">
             <%= Spree.t(:package_from) %>
@@ -75,7 +75,7 @@
                   <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= item.variant.name %></td>
                   <td class="item-qty"><%= item.quantity %>
-                    <%= item.text_field :quantity, class: "form-control", size: 5 %></td>
+                    <%= ship_form.text_field :quantity, class: "form-control"%></td>
                   <td class="item-price"><%= display_price(item.variant) %></td>
                   <td>
                       <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
@@ -92,7 +92,7 @@
             <% ship_form.object.shipping_rates.reverse_each do |rate| %>
               <li class="list-group-item shipping-method">
                 <label class="method_label">
-                  <%= ship_form.radio_button :selected_shipping_rate_id, rate.id, data: { behavior: 'shipping-method-selector', cost: rate.display_cost } %>
+                  <%= ship_form.text_area :selected_shipping_rate_id, rate.id, data: { behavior: 'shipping-method-selector', cost: rate.display_cost } %>
                   <span class="rate-name"><%= rate.name %></span>
                   <% if rate.name == "Delivered" %>
                     <span class="badge badge-info" id="delivery-fee-msg"><%= "*Delivery fee: ₱70 for the first 1000 and additional ₱25 per succeeding thousand" %></span>
