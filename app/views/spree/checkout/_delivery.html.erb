@@ -44,43 +44,44 @@
     <h3 class="panel-title"><%= Spree.t(:delivery) %></h3>
   </div> -->
   <div class="panel-body" data-hook="shipping_method_inner">
-    <div id="methods">
-      <%= form.fields_for :shipments do |ship_form| %>
-      <table id="myTable" class="table stock-contents" data-hook="stock-contents">
-        <colgroup>
-          <col style="width: 10%;" />
-          <col style="width: 60%;" />
-          <col style="width: 10%;" />
-          <col style="width: 15%;" />
-          <col style="width: 5%;" />
-        </colgroup>
-        <thead>
-          <tr class="active">
-            <th></th>
-            <th class="item-name_header"><%= Spree.t(:item) %></th>
-            <th class="item-qty_header"><%= Spree.t(:qty) %></th>
-            <th class="item-price_header"><%= Spree.t(:price) %></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% ship_form.object.manifest.each do |item , line_item| %>
-            <tr class="stock-item">
-              <td class="item-image"><%= mini_image(item.variant) %></td>
-              <td class="item-name"><%= item.variant.name %></td>
-              <td class="item-qty"><%= item.quantity %>
-              <%= ship_form.text_area :special_instructions, cols: 40, rows: 4, class: "form-control" %></td>
-              <td class="item-price"><%= display_price(item.variant) %></td>
-              <td>
-                  <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
-                      <span class="glyphicon glyphicon-trash"></span>
-                  </button>
-              </td>
+    <%= form.fields_for :shipments do |ship_form| %>
+    <table id="myTable" class="table stock-contents" data-hook="stock-contents">
+      <colgroup>
+        <col style="width: 10%;" />
+        <col style="width: 60%;" />
+        <col style="width: 10%;" />
+        <col style="width: 15%;" />
+        <col style="width: 5%;" />
+      </colgroup>
+      <thead>
+        <tr class="active">
+          <th></th>
+          <th class="item-name_header"><%= Spree.t(:item) %></th>
+          <th class="item-qty_header"><%= Spree.t(:qty) %></th>
+          <th class="item-price_header"><%= Spree.t(:price) %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% ship_form.object.manifest.each do |item , line_item| %>
+          <tr class="stock-item">
+            <td class="item-image"><%= mini_image(item.variant) %></td>
+            <td class="item-name"><%= item.variant.name %></td>
+            <td class="item-qty"><%= item.quantity %>
+            <%= ship_form.text_area :special_instructions, cols: 40, rows: 4, class: "form-control" %></td>
+            <td class="item-price"><%= display_price(item.variant) %></td>
+            <td>
+                <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
 
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div id="methods">
+
         <div class="shipment">
           <!-- <h4 class="stock-location" data-hook="stock-location">
             <%= Spree.t(:package_from) %>
