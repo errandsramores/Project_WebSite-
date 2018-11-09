@@ -77,7 +77,7 @@
                   <td class="item-qty"><%= item.quantity %></td>
                   <td class="item-price"><%= display_price(item.variant) %></td>
                   <td>
-                      <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item%>">
+                      <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.quantity%>">
                           <span class="glyphicon glyphicon-trash"></span>
                       </button>
                   </td>
