@@ -44,7 +44,7 @@
     <h3 class="panel-title"><%= Spree.t(:delivery) %></h3>
   </div> -->
   <div class="panel-body" data-hook="shipping_method_inner">
-
+  <%= form.fields_for :shipments do |ship_form| %>
     <table id="myTable" class="table stock-contents" data-hook="stock-contents">
       <colgroup>
         <col style="width: 10%;" />
@@ -80,6 +80,7 @@
         <% end %>
       </tbody>
     </table>
+    <% end %>
     <%= form.fields_for :shipments do |ship_form| %>
     <div id="methods">
 
