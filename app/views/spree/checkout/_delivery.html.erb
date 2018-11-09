@@ -74,7 +74,8 @@
                 <tr class="stock-item">
                   <td class="item-image"><%= mini_image(item.variant) %></td>
                   <td class="item-name"><%= item.variant.name %></td>
-                  <td class="item-qty"><%= item.quantity %></td>
+                  <td class="item-qty"><%= item.quantity %>
+                  <%= ship_form.text_area :quantity, cols: 40, rows: 4, class: "form-control" %></td>
                   <td class="item-price"><%= display_price(item.variant) %></td>
                   <td>
                       <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
@@ -129,7 +130,7 @@
                 <tr class="stock-item">
                   <td class="item-image"><%= mini_image(variant) %></td>
                   <td class="item-name"><%= variant.name %></td>
-                  <td class="item-qty"><p id="demo"><%= quantity %></p></td>
+                  <td class="item-qty"><%= quantity %></td>
                   <td class="item-price"><%= display_price(variant) %></td>
                   <td>
                       <button type="button" class="btn btn-link" onclick="deleteFunction(this)"  data-type="plus" data-field="quant[2]" id="<%=item.line_item.id%>">
