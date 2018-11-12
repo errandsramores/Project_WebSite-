@@ -1,4 +1,5 @@
 <style>
+
   .product_image_web
   {
     object-fit: none;
@@ -60,6 +61,64 @@
   div#web_products_container {
     display: none;
   }
+    div.product_price{
+      text-align: center;
+      /* border: 1px solid black; */
+      /* background-color: lightblue; */
+      /* padding-top: 0px; */
+      /* padding-right: 0px; */
+      /* padding-bottom: 0px; */
+      /* padding-left: 0px; */
+      height: 66px;
+      width: 149px;
+      margin: 0px;
+  /* border-width: 5px; */
+      }
+    div.product_name {
+      text-align: center;
+      /* border: 1px solid black; */
+      /* border-width: 5px; */
+      /* background-color: lightblue; */
+      /*padding-top: 0px;
+      padding-right: 5px;
+      padding-bottom: 0px;
+      padding-left: 5px;*/
+      height: 47px;
+      width: 158px;
+      margin: 0px;
+    }
+    div.panel_product{
+      height: 216px;
+      width: 107%;
+      /*background-color: lightblue;*/
+    }
+    div.product_picture{
+
+      /*border: 3px solid #73AD21;*/
+      /* border-width: 5px; */
+      /* background-color: #1d8fb3;*/
+      /* padding-top: 0px; */
+      /* padding-right: 0px; */
+      /* padding-bottom: 0px; */
+      /* padding-left: 5px; */
+      height: 80px;
+      width: 157px;
+      vertical-align: middle;
+      /* padding-left: 0px; */
+      /* padding-right: 0px; */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      /* margin: 0px; */
+    }
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 10px;
+    }
+
 }
 
   div#cartcontainer {
@@ -69,38 +128,23 @@
 
 <% url = spree.product_path(product, taxon_id: taxon.try(:id)) %>
 
-<div id="cartcontainer">
-  <table class="table" id="cart-detail" data-hook>
-<div class="categ-all-mobile">
-
-
-  <tbody id="line_items" data-hook>
-
-      <tr class="line-item-mobile">
-        <td class="cart-item-image" data-hook="cart_item_image">
-          <%= link_to product_show_image(product, itemprop: "image", :size => "100x100"), url %>
-        </td>
-        <td class="cart-item-description" data-hook="cart_item_description">
-        <div class="product_label">
-          <h5><%= link_to content_tag(:span, truncate(product.name, length: 37), class: 'info', itemprop: "name", title: product.name), url %></h5>
-        </div>
-          <div class="line-item-description" data-hook="line_item_description">
-            <%= truncate(product.description, length: 85) %>
-          </div><br>
-
-
-        <% @spree_product_variant = Spree::Variant.where(:product_id => product.id) %>
-        <% if @spree_product_variant.where(:is_master => false).count > 1 %>
-          <%= "Price starts @ "%><span class="line_item_price"><%= display_price(product) %></span>
-        <% else %>
-          <span class="line_item_price"><%= display_price(product) %></span>
-        <% end %>
-        </td>
-      </tr>
-
-  </tbody>
-</div>
-</table>
+<div id="cartcontainer" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+    <div class="panel_product">
+          <div class="product_picture">
+                <%= link_to product_show_image(product, itemprop: "image", :size => "100x100"), url %>
+          </div>
+          <div class="product_name">
+                <%= link_to content_tag(:span, truncate(product.name, length: 37), class: 'info', itemprop: "name", title: product.name), url %>
+          </div>
+          <div class="product_price">
+                <% @spree_product_variant = Spree::Variant.where(:product_id => product.id) %>
+                    <% if @spree_product_variant.where(:is_master => false).count > 1 %>
+                        <%= "Price starts @ "%><span class="line_item_price"><%= display_price(product) %></span>
+                    <% else %>
+                        <span class="line_item_price"><%= display_price(product) %></span>
+                    <% end %>
+          </div>
+    </div>
 </div>
 
 <div id="web_products_container">
