@@ -32,10 +32,16 @@
     margin-bottom: 0px !important;
   }
 
-
   #center_panel {
   background-color: skyblue;
   text-align: center;
+  }
+
+  .image_size{
+    height: 100px;
+    width: 150px;
+
+
   }
 }
 
@@ -54,7 +60,7 @@
           <div id="center_panel" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
                 <div class="product_picture">
                     <%= link_to spree.product_path(m) do %>
-                      <%= image_tag @spree_variant_asset.attachment.url(:product_show), :size => "100x100" %>
+                      <%= image_tag @spree_variant_asset.attachment.url(:product_show), :size => "image_size" %>
                     <% end %>
                 </div>
                 <div class="product_name">
