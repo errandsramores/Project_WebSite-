@@ -17,7 +17,7 @@
   }
 
   .product-brand {
-    width: 80%;
+    width: 100%;
   }
 
   .cart-item-description-brand {
@@ -32,46 +32,42 @@
     margin-bottom: 0px !important;
   }
 
+
+  #center_panel {
+  background-color: skyblue;
+  text-align: center;
+  }
 }
 
 </style>
 
-<div class="categ-all-mobile">
-  <div class="Categ-icon">
-    <%= render :partial => "render_me/categories_icon" %>
-  </div>
+
+
   <div class="product-brand">
-    <table class="table" id="cart-detail" data-hook>
+
+    <div class="panel_product">
       <% @brands_products = Spree::Product.where(:brand_id => @brand.id).page(params[:page]).per(7) %>
       <% @brands_products.each do |m| %>
-        <% @spree_product_variant = Spree::Variant.where(:product_id => m, :is_master => true) %>
-        <% @spree_variant_price = Spree::Price.find_by_variant_id(@spree_product_variant) %>
-        <% @spree_variant_asset = Spree::Asset.find_by_viewable_id(@spree_product_variant)%>
-        <tbody class="product-brand" id="line_items" data-hook>
-          <!-- <%= link_to spree.product_path(m) do %> -->
-            <tr class="line-item-mobile">
-              <td class="cart-item-image" data-hook="cart_item_image">
-                <%= link_to spree.product_path(m) do %>
-                  <%= image_tag @spree_variant_asset.attachment.url(:product_show), :size => "100x100" %>
-                <% end %>
-              </td>
-              <td class="cart-item-description-brand" data-hook="cart_item_description">
-              <div class="product_label">
-                <h5><%= link_to word_wrap(m.name),spree.product_path(m)  %></h5>
-              </div>
-                <div class="line-item-description" data-hook="line_item_description">
-                  <%= truncate(m.description, length: 70) %>
-                </div><br>
+          <% @spree_product_variant = Spree::Variant.where(:product_id => m, :is_master => true) %>
+          <% @spree_variant_price = Spree::Price.find_by_variant_id(@spree_product_variant) %>
+          <% @spree_variant_asset = Spree::Asset.find_by_viewable_id(@spree_product_variant)%>
+          <div id="center_panel" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+                <div class="product_picture">
+                    <%= link_to spree.product_path(m) do %>
+                      <%= image_tag @spree_variant_asset.attachment.url(:product_show), :size => "100x100" %>
+                    <% end %>
+                </div>
+                <div class="product_name">
+                    <%= link_to word_wrap(m.name),spree.product_path(m)  %>
+                </div>
+                <div class="product_price">
+                    <%= number_to_currency(@spree_variant_price.amount, unit: "₱")%>
+                </div>
+          </div>
 
-              <span class="line_item_price">
-                <%= number_to_currency(@spree_variant_price.amount, unit: "₱")%>
-              </span>
-              </td>
-            </tr>
-          <!-- <% end %> -->
-        </tbody>
       <% end %>
-    </table>
-    <center id="paginate-center"><%= paginate @brands_products %></center>
     </div>
-</div>
+
+
+        <center id="paginate-center"><%= paginate @brands_products %></center>
+    </div>
