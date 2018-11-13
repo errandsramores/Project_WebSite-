@@ -1743,6 +1743,7 @@ ul.ul_wishlist_account {
     width: 100%;
     position: fixed;
     bottom: -5px;
+    z-index: 5;
   }
 
   input#btn-id {
