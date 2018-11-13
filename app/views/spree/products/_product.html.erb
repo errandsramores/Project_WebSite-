@@ -113,10 +113,12 @@
       /* margin: 0px; */
     }
 
-    img {
-    
-      object-fit: cover;
+    .brand-pic-size{
+      width: 0px;
+
+
     }
+
 
 }
 
@@ -130,7 +132,7 @@
 <div id="cartcontainer" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
     <div class="panel_product">
           <div class="product_picture">
-                <%= link_to product_show_image(product, itemprop: "image", :size => "100x100"), url %>
+                <%= link_to product_show_image(product, itemprop: "image", :size => "brand-pic-size"), url %>
           </div>
           <div class="product_name">
                 <%= link_to content_tag(:span, truncate(product.name, length: 37), class: 'info', itemprop: "name", title: product.name), url %>
