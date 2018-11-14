@@ -72,9 +72,9 @@
           <% @spree_variant_asset = Spree::Asset.find_by_viewable_id(@spree_product_variant)%>
           <div id="center_panel" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
                 <div class="product_picture">
-                    <%= link_to spree.product_path(m) do %>
-                      <%= image_tag @spree_variant_asset.attachment.url(:product_show), :size => "image_size" %>
-                    <% end %>
+                    <%# <%= link_to spree.product_path(m) do %> %>
+                      <%= link_to (image_tag @spree_variant_asset.attachment.url(:product_show), :size => "image_size") %>
+                    <%# <% end %> %>
                 </div>
                 <div class="product_name">
                     <%= link_to word_wrap(m.name),spree.product_path(m)  %>
