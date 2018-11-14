@@ -46,6 +46,8 @@
   .image_size{
     height: 100px;
     width: 150px;
+    margin-left: auto;
+    margin-right: auto;
     object-fit: fill;
 
   }
@@ -87,5 +89,5 @@
     </div>
 
 
-        <center id="paginate-center"><%= paginate @brands_products %></center>
+        <center id="paginate-center"><%= paginate @brands_products, window: 1 %></center>
     </div>
