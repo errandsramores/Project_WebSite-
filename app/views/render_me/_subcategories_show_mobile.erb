@@ -72,6 +72,7 @@
   }
 
   div#categ-brands {
+    margin-left: 30px;
     max-width: 100%;
   }
 
@@ -167,6 +168,11 @@
     display: block;
   } */
 
+  #subcateg_h3{
+    font-size: 24px;
+    padding-left: 40px;
+  }
+
 </style>
 
 <body class="two-col" id="home-page" data-hook="body" style="">
@@ -217,7 +223,7 @@
         <% @specifics_mob = Specific.where(:subcategory_id => @subcategory.id).page(params[:page]).per(8)%>
         <!-- .paginate(:page => params[:page], :per_page => 8) %> -->
 
-        <h3>Subcategories</h3>
+        <h3 id="subcateg_h3">Subcategories</h3>
         <% @specifics_mob.each do |specifics_mob| %>
           <div class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
             <div class="panel panel-default" id="panel-default-id">
