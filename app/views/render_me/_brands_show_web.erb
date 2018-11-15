@@ -31,7 +31,7 @@
 
       <% Spree::Product.where(:brand_id => @brand.id).each do |m| %>
       <%= link_to spree.product_path(m) do %>
-        <% @spree_product_variant = Spree::Variant.where(:product_id => m, :is_master => true).page(params[:page]).per(16) %>
+        <% @spree_product_variant = Spree::Variant.where(:product_id => m, :is_master => true).page(params[:page]).per(5) %>
           <div class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope="" itemtype="https://schema.org/Product">
             <div class="panel panel-default" id="panel-id">
                 <div class="panel-body text-center product-body">
