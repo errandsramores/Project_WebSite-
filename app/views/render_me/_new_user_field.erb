@@ -13,8 +13,9 @@
   </div>
   <div class="form-group">
       <%= f.text_field :birthday, placeholder:"Birthday", class: 'form-control' , required: true%>
+  </div>
+  <div class="form-group">
       <%= f.select(:gender, [["Male", "male"], ["Female", "female"]], {}, {:class=>"form-control"})%>
-
   </div>
   <div class="form-group">
     <%= f.email_field :email, :class => 'form-control', :placeholder => Spree.t(:email) %>
