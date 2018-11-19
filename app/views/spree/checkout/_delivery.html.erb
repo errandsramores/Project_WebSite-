@@ -43,42 +43,65 @@
   <!-- <div class="panel-heading">
     <h3 class="panel-title"><%= Spree.t(:delivery) %></h3>
   </div> -->
-  <%= form.fields_for :shipments do |ship_form| %>
-    <table id="myTable" class="table stock-contents" data-hook="stock-contents">
-      <colgroup>
-        <col style="width: 10%;" />
-        <col style="width: 60%;" />
-        <col style="width: 10%;" />
-        <col style="width: 15%;" />
-        <col style="width: 5%;" />
-      </colgroup>
-      <thead>
-        <tr class="active">
-          <th></th>
-          <th class="item-name_header"><%= Spree.t(:item) %></th>
-          <th class="item-qty_header"><%= Spree.t(:qty) %></th>
-          <th class="item-price_header"><%= Spree.t(:price) %></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% ship_form.object.manifest.each do |item , line_item| %>
-          <tr class="stock-item">
-            <td class="item-image"><%= mini_image(item.variant) %></td>
-            <td class="item-name"><%= item.variant.name %></td>
-            <td class="item-qty"><%= item.quantity %></td>
-            <td class="item-price"><%= display_price(item.variant) %></td>
-            <td>
-                <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </button>
-            </td>
+  <% variant = line_item.variant %>
 
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <% end %>
+  <tr class="line-item-mobile">
+    <%= order_form.fields_for :line_items, line_item do |item_form_mobile| %>
+    <td class="cart-item-image" data-hook="cart_item_image">
+        <%= link_to image_tag(variant.images.first.attachment.url(:product_show), :class => "cart-pic-size"), variant.product %>
+    </td>
+    <td class="cart-item-description" data-hook="cart_item_description">
+    <div class="product_label">
+      <%= link_to line_item.name, product_path(variant.product) %>
+    </div>
+
+      <% if line_item.insufficient_stock? %>
+        <span class="out-of-stock">
+          <%= Spree.t(:out_of_stock) %>&nbsp;&nbsp;
+        </span>
+      <% end %>
+      <div class="line-item-description" data-hook="line_item_description">
+        <%= line_item_description_text(line_item.description) %>
+      </div><br>
+
+    <span class="line_item_price">
+      <%= line_item.single_money.to_html %>
+    </span>
+
+    <span class="lead text-primary cart-item-price" data-hook="cart_item_price" id="line_item_price_web">
+      <%= line_item.single_money.to_html %>
+    </span>
+      <!-- <div id="icons-input"> -->
+      <button type="button" class="btn btn-link" onclick="removeFunction1(this)" data-type="plus" data-field="quant[2]" id="<%=line_item.id%>">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+
+      <div class="input-group">
+
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-danger btn-number" onclick="minusFunction1(this)"  data-type="minus" data-field="quant[2]" id="<%=line_item.id%>">
+          <span class="glyphicon glyphicon-minus"></span>
+        </button>
+      </span>
+
+      <%= item_form_mobile.text_field :quantity, class: "form-control line_item_quantity", size:5, id: "line_item_quantity1" + line_item.id.to_s %>
+
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-success btn-number" onclick="plusFunction1(this)" data-type="plus" data-field="quant[2]" id="<%=line_item.id + 1%>">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </span>
+      </div>
+    </td>
+
+    <td class="lead text-primary cart-item-total" data-hook="cart_item_total" id="product-mul-prize">
+      <%= line_item.display_amount.to_html unless line_item.quantity.nil? %>
+    </td>
+
+
+  </tr>
+  <% end %>
+
     <div class="panel-body" data-hook="shipping_method_inner">
     <%= form.fields_for :shipments do |ship_form| %>
     <div id="methods">
