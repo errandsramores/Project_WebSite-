@@ -17,7 +17,7 @@ Spree.config do |config|
   config.admin_interface_logo = "logo.jpeg"
 end
 Spree.user_class = "Spree::LegacyUser"
-Spree::PermittedAttributes.user_attributes.push :first_name, :last_name
+Spree::PermittedAttributes.user_attributes.push :first_name, :last_name, :birthday, :gender
 Spree::Config.set(:products_per_page => 12)
 
 #initializer 'spree.register.calculators' do |app|
