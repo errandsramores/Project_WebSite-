@@ -62,6 +62,18 @@
           <% end %>
           <center id="paginate-center-web"><%= paginate @spree_product_variant %></center>
         </div>
+          <% if simple_current_order.item_count < 1 %>
+            <div class="sideCart">
+              <%= render :partial => "render_me/side_cart_without" %>
+            </div>
+          <% else %>
+              <div class="sideCart">
+                <%= render :partial => "render_me/side_cart" %>
+              </div>
+          <% end %>
   </div>
 </div>
 </body>
+<footer>
+  <%= render :partial => "spree/shared/footer" %>
+</footer>
