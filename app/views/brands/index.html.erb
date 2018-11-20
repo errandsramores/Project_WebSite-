@@ -90,7 +90,7 @@ center#paginate-center {
         <aside id="sidebar" class="col-sm-4 col-md-3" data-hook="">
     <div data-hook="homepage_sidebar_navigation">
 
-<%= render :partial => "render_me/sidebar_hover" %>
+<!-- # <%= render :partial => "render_me/sidebar_hover" %> -->
 
   </div>
 
@@ -154,15 +154,15 @@ center#paginate-center {
   <% end %>
   </div>
 </div>
-<!-- # <% if simple_current_order.item_count < 1 %>
-# <div class="sideCart">
-#   <%= render :partial => "render_me/side_cart_without" %>
-# </div>
-# <% else %>
-# <div class="sideCart">
-#   <%= render :partial => "render_me/side_cart" %>
-# </div>
-# <% end %> -->
+<% if simple_current_order.item_count < 1 %>
+<div class="sideCart">
+  <%= render :partial => "render_me/side_cart_without" %>
+</div>
+<% else %>
+<div class="sideCart">
+  <%= render :partial => "render_me/side_cart" %>
+</div>
+<% end %>
 </div>
 </div>
 
