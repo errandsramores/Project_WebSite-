@@ -1,0 +1,92 @@
+<style>
+
+@media only screen and (max-width: 360px), (max-width: 420px) {
+  .categ-all-mobile {
+    width: 100%;
+  }
+
+  .categ-all-mobile {
+    display: flex;
+  }
+
+  .Categ-icon {
+    width: 19%;
+    top: 0;
+    position: sticky;
+    margin-right: 5px;
+  }
+
+  .product-brand {
+    width: 100%;
+
+  }
+
+  .cart-item-description-brand {
+    width: 60%;
+  }
+
+  center#paginate-center {
+    margin-left: -15%;
+  }
+
+  div#content {
+    margin-bottom: 0px !important;
+  }
+
+  #center_panel {
+    text-align: center;
+    height: 170px;
+    width: 170px;
+    /* border-style: solid;
+    border-color: green; */
+  }
+
+  .image_size{
+  object-fit: cover;
+
+  }
+
+  div.product_picture{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  img {
+    vertical-align: middle;
+    margin-left: -10px;
+}
+}
+
+</style>
+
+
+
+  <div class="product-brand">
+
+    <div class="panel_product">
+      <% @brands_products = Spree::Product.where(:brand_id => @brand.id).page(params[:page]).per(10) %>
+      <% @brands_products.each do |m| %>
+          <% @spree_product_variant = Spree::Variant.where(:product_id => m, :is_master => true) %>
+          <% @spree_variant_price = Spree::Price.find_by_variant_id(@spree_product_variant) %>
+          <% @spree_variant_asset = Spree::Asset.find_by_viewable_id(@spree_product_variant)%>
+          <div id="center_panel" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+                <div class="product_picture">
+                    <%= link_to spree.product_path(m) do %>
+                      <%= image_tag @spree_variant_asset.attachment.url(:product_show), :size => "image_size" %>
+                    <% end %>
+                </div>
+                <div class="product_name">
+                    <%= link_to word_wrap(m.name),spree.product_path(m)  %>
+                </div>
+                <div class="product_price">
+                    <%= number_to_currency(@spree_variant_price.amount, unit: "₱")%>
+                </div>
+          </div>
+
+      <% end %>
+
+
+  </div>
+    <center id="paginate-center"><%= paginate @brands_products %></center>
+</div>
