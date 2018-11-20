@@ -1,0 +1,75 @@
+<style>
+
+ div#cart_button {
+   position: relative;
+   /* border:2px solid orange; */
+   width:220px;
+ }
+
+ div#inside-cart {
+   width:1250px;
+   /* border:2px solid green; */
+   display: flex;
+   justify-content: space-around;
+ }
+
+ @media only screen and (max-width: 360px), (max-width: 420px)
+ {
+   .menu-icon {
+     left: -0.25%;
+   }
+  }
+
+</style>
+<% @body_id = 'cart' %>
+
+<% if @variant %>
+ <%= render partial: 'spree/shared/trackers/segment/product_added.js',
+             formats: :js,
+             locals: { product: @variant.product, order: @order } %>
+<% end %>
+<%= render partial: 'spree/shared/trackers/segment/cart_viewed.js',
+           formats: :js,
+           locals: { order: @order } %>
+
+
+<div data-hook="cart_container">
+ <div id="cartcontainer">
+   <h3><%= Spree.t(:shopping_cart) %></h3>
+
+     <% if @order.line_items.empty? %>
+
+       <div data-hook="empty_cart" id="cart-empty">
+         <div class="alert alert-info"><%= Spree.t(:your_cart_is_empty) %></div>
+         <p><%= link_to Spree.t(:continue_shopping), root_path, class: 'btn btn-default' %></p>
+       </div>
+
+     <% else %>
+
+   <div data-hook="outside_cart_form" id="try" >
+     <%= form_for @order, url: update_cart_path, html: { id: 'update-cart' } do |order_form| %>
+
+       <div data-hook="inside_cart_form" id="inside-cart">
+
+         <div data-hook="cart_items" class="table-responsive" id="table-mobile-edit">
+           <%= render partial: 'form', locals: { order_form: order_form } %>
+         </div>
+
+         <div id="cart_button">
+           <%= render :partial => "render_me/cart_button" %>
+         </div>
+
+         <% end %>
+
+       </div>
+    </div>
+    <% end %>
+   </div>
+
+</div>
+
+
+<script>
+ Spree.current_order_id = "<%= @order.number %>"
+ Spree.current_order_token = "<%= @order.guest_token %>"
+</script>
