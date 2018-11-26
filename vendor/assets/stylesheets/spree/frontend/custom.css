@@ -793,7 +793,7 @@ div#ListA-id {
     border-color: #def;
     height: 210px;
     border-style: groove;
-    border-width: 3px;
+    border-width: 2px;
 }
 
 div#panel-default-id:hover {
