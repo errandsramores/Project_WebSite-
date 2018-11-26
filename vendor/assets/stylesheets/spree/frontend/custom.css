@@ -1067,6 +1067,7 @@ ul.ul_wishlist_account {
   /* END NOT ACTIVE ONLY */
   .mobile_home_rev {
     display: none;
+
   }
 
   /* Login web*/
@@ -1200,7 +1201,7 @@ ul.ul_wishlist_account {
   *
   {
     height: auto;
-    overflow: auto;
+    /* overflow: auto; */
   }
   #spree-header #logo{
     display: none;
