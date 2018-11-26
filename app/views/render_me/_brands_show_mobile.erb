@@ -70,7 +70,7 @@
           <% @spree_product_variant = Spree::Variant.where(:product_id => m, :is_master => true) %>
           <% @spree_variant_price = Spree::Price.find_by_variant_id(@spree_product_variant) %>
           <% @spree_variant_asset = Spree::Asset.find_by_viewable_id(@spree_product_variant)%>
-          <div id="center_panel" class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+          <div id="center_panel" class="col-md-3 col-sm-4 col-xs-4 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
                 <div class="product_picture">
                     <%= link_to spree.product_path(m) do %>
                       <%= image_tag @spree_variant_asset.attachment.url(:product_show), :size => "image_size" %>
