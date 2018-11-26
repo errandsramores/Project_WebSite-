@@ -790,8 +790,9 @@ div#ListA-id {
 }
 
   div#panel-default-id {
-  border-color: white;
-  height: 210px;
+    border-color: #def;
+    height: 210px;
+    border-style: groove;
 }
 
 div#panel-default-id:hover {
