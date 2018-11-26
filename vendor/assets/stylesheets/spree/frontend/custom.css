@@ -1435,6 +1435,8 @@ ul.ul_wishlist_account {
   #h1_categ
   {
     height: 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
   /* HOME NO CART */
   body#default.one-col div.container div.row div#content.col-sm-10.col-md-18
