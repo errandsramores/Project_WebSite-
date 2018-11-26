@@ -789,8 +789,9 @@ div#ListA-id {
   pointer-events: none;
 }
 
-div#panel-default-id {
+  div#panel-default-id {
   border-color: white;
+  height: 210px;
 }
 
 div#panel-default-id:hover {
