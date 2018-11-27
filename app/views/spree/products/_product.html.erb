@@ -63,17 +63,10 @@
   }
     div.product_price{
       text-align: center;
-      /* border: 1px solid black; */
-      /* background-color: lightblue; */
-      /* padding-top: 0px; */
-      /* padding-right: 0px; */
-      /* padding-bottom: 0px; */
-      /* padding-left: 0px; */
       height: 66px;
       width: 149px;
       margin-left: auto;
       margin-right: auto;
-  /* border-width: 5px; */
       }
     div.product_name {
       text-align: center;
@@ -98,6 +91,12 @@
     object-fit: cover;
     }
 
+    #cartcontainer_rev{
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: -5px;
+    }
+
 
 }
 
@@ -108,7 +107,7 @@
 
 <% url = spree.product_path(product, taxon_id: taxon.try(:id)) %>
 
-<div id="cartcontainer" class="col-md-3 col-sm-4 col-xs-4 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+  <div id="cartcontainer_rev" class="col-md-3 col-sm-4 col-xs-4 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
     <div class="panel_product">
           <div class="product_picture">
                 <%= link_to product_show_image(product, itemprop: "image", :size => "brand-pic-size"), url %>
