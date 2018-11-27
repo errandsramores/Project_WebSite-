@@ -77,9 +77,9 @@
                   <td class="item-qty" id="demo<%=item.line_item.id%>"><%= item.quantity %></td>
                   <td class="item-price"><%= display_price(item.variant) %></td>
                   <td>
-                      <button type="button" class="btn btn-link" onclick="deleteFunction(this)" id="<%=item.line_item.id%>">
-                          <span class="glyphicon glyphicon-trash"></span>
-                      </button>
+                    <%= link_to item.line_item.id, :method => :delete, :class => 'button' do%>
+                        <span id="trash" class="glyphicon glyphicon-trash"></span>
+                    <% end %>
                   </td>
                 </tr>
               <% end %>
