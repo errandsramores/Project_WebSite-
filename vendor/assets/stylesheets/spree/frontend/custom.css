@@ -790,10 +790,11 @@ div#ListA-id {
 }
 
   div#panel-default-id {
-    border-color: #def;
-    height: 210px;
+    /* border-color: #def; */
+    height: 180px;
     border-style: groove;
     border-width: 2px;
+    margin-bottom: 4px;
 }
 
 div#panel-default-id:hover {
