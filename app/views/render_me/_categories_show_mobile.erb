@@ -171,9 +171,7 @@
 
 <body class="two-col" id="home-page" data-hook="body" style="">
 <div class="categ-all-mobile">
-  <div class="Categ-icon">
 
-  </div>
 
 <div class="brands_subcat">
   <div id="categ-brands">
@@ -191,7 +189,7 @@
               <%= link_to (image_tag specbrands.image_brand.url(:thumb), :size => "60x60"), specbrands%><br>
             </div>
             <div id="brand-image-text">
-              <%= link_to truncate(specbrands.name, length: 28), specbrands, :class => "brand-text" %>
+              <%= link_to truncate(specbrands.name, length: 56), specbrands, :class => "brand-text" %>
             </div>
           </div>
           <% end %>
