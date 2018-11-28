@@ -185,7 +185,7 @@
 
     <div class="all-brands">
       <% @specbrand.each do |specbrands| %>
-          <%if specbrands.name.start_with?('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z') %>
+          <%if specbrands.name.start_with?('A','B','C','D','E','F','G','H','I','J','K','L','M') %>
           <div class="brands-obyo">
             <div id="brand-image">
               <%= link_to (image_tag specbrands.image_brand.url(:thumb), :size => "60x60"), specbrands%><br>
@@ -198,8 +198,7 @@
       <% end %>
     </div>
   </div>
-
-  </div><br>
+<br>
 
 
     <div id="categ-subcateg-mobile">
