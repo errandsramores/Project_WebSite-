@@ -71,7 +71,7 @@
   }
 
   .brands_subcat {
-    width: 80%;
+    width: 100%;
   }
 
   div#categ-brands {
@@ -111,6 +111,16 @@
 
   div#content {
     margin-bottom: 0px !important;
+  }
+
+  h3#subcateg_attri{
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  .body_categ{
+    padding-left: 2px;
+    padding-right: 2px;
   }
 
   /* .pagination {
@@ -181,9 +191,9 @@
         <% @brands_mob = Brand.where(:specific_id => @specific.id).page(params[:page]).per(8)%>
         <!-- .paginate(:page => params[:page], :per_page => 8) %> -->
 
-        <h3>Brands</h3>
+        <h3 id="subcateg_attri">Brands</h3>
         <% @brands_mob.each do |brands_mob| %>
-          <div class="col-md-3 col-sm-4 col-xs-4 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
+          <div class="col-md-3 col-sm-4 col-xs-4 product-list-item body_categ" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
             <div class="panel panel-default" id="panel-default-id">
               <div class="panel-body text-center product-body" id="panel-body-mobile">
                 <%= link_to (image_tag brands_mob.image_brand.url(:thumb), :size => "100x100"), brands_mob %>
