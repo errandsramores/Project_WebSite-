@@ -191,10 +191,6 @@ a:hover {
 div #productHover
 {
   align-items: center;
-  height: 200px;
-  border-style: groove;
-  border-width: 2px;
-  margin-bottom: 4px;
 }
 
 div #productHover2
