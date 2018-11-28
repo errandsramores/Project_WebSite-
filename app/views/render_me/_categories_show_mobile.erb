@@ -20,8 +20,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 70px;
-    height: 60px;
+    width: 80px;
+    height: 100px;
     object-fit: cover;
   }
 
@@ -41,6 +41,9 @@
 
   .brands-obyo {
     display: block;
+    border-style: groove;
+    width: 87px;
+    height: 160px;
   }
 
   div.all-brands {
@@ -72,7 +75,8 @@
 
   .brands_subcat {
     width: 100%;
-    margin-left: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
   }
 
   div#categ-brands {
@@ -190,7 +194,7 @@
           <%if specbrands.name.start_with?('A','B','C','D','E','F','G','H','I','J','K','L','M') %>
           <div class="brands-obyo">
             <div id="brand-image">
-              <%= link_to (image_tag specbrands.image_brand.url(:thumb), :size => "60x60"), specbrands%><br>
+              <%= link_to (image_tag specbrands.image_brand.url(:thumb), :size => "80x50"), specbrands%><br>
             </div>
             <div id="brand-image-text">
               <%= link_to truncate(specbrands.name, length: 56), specbrands, :class => "brand-text" %>
