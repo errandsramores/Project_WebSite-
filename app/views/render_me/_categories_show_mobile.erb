@@ -21,18 +21,19 @@
     justify-content: space-around;
     align-items: center;
     width: 80px;
-    height: 100px;
+    height: 80px;
     object-fit: cover;
   }
 
   #brand-image-text {
     display: flex;
     justify-content: space-around;
-    width: 70px;
+    width: 80px;
     height: 35px;
     text-align: center;
     padding-left: 2px;
     padding-right: 2px;
+    margin-top: 10%;
   }
 
   .brand-text {
@@ -43,7 +44,7 @@
     display: block;
     border-style: groove;
     width: 87px;
-    height: 160px;
+    height: 129px;
   }
 
   div.all-brands {
@@ -123,7 +124,10 @@
     margin-top: 0px;
     margin-bottom: 10px;
   }
-
+  .body_categ{
+    padding-left: 2px;
+    padding-right: 2px;
+  }
 }
   /* .pagination {
   background: white;
@@ -222,7 +226,7 @@
 
         <h3 id="subcateg_attri">Subcategories</h3>
         <% @subcategories_mob.each do |subcat| %>
-          <div class="col-md-3 col-sm-4 col-xs-4 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
+          <div class="col-md-3 col-sm-4 col-xs-4 product-list-item body_categ" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
             <div class="panel panel-default" id="panel-default-id">
               <div class="panel-body text-center product-body" id="panel-body-mobile">
                 <%= link_to (image_tag subcat.image_subcategory.url(:thumb), :size => "100x100"), subcat %>
