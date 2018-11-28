@@ -34,7 +34,7 @@
     <% @all_notactive_cat = Category.where(:active => false).sort_by &:sort_order %>
 
     <% @all_active_cat.each do |all_active_cat| %>
-      <div id="productHover" class="col-md-3 col-sm-4 col-xs-4 product-list-item categories_3div" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
+      <div id="productHover" class="col-md-3 col-sm-4 col-xs-4 product-list-item categories_3div mobile_home" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
         <div class="panel panel-default" id="panel-default-id">
           <div id="image_container" class="panel-body text-center product-body">
             <%= link_to (image_tag all_active_cat.image_category.url(:thumb), :class => ".home_image_mobile_3rd"), all_active_cat %>
