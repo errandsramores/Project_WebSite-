@@ -55,22 +55,7 @@
     <% end %>
 
 
-    <% @all_notactive_cat.each do |all_notactive_cat| %>
-      <div class="col-md-3 col-sm-4 col-xs-4 product-list-item categories_3div" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
-        <div class="panel panel-default" id="panel-default-id">
-          <div id="image_container" class="panel-body text-center product-body">
-             <div class="not-image"><%= image_tag all_notactive_cat.image_category.url(:thumb), :class => ".home_image_mobile_3rd" %> </div>
-            <br>
-          </div>
 
-          <div id = "notactive" class="panel-footer text-center">
-            <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-              <%= truncate(all_notactive_cat.name, length: 47) %>
-            </span>
-          </div>
-        </div></a>
-      </div>
-    <% end %>
   </div>
 
 
