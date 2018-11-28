@@ -118,7 +118,16 @@
   div#content {
     margin-bottom: 0px !important;
   }
-
+  h3#subcateg_attri{
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  .body_categ{
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+}
   /* .pagination {
   background: white;
   cursor: default; */
@@ -194,7 +203,7 @@
           <%if specbrands.name.start_with?('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z') %>
           <div class="brands-obyo">
             <div id="brand-image">
-              <%= link_to (image_tag specbrands.image_brand.url(:thumb), :size => "60x60"), specbrands%><br>
+              <%= link_to (image_tag specbrands.image_brand.url(:thumb), :size => "80x50"), specbrands%><br>
             </div>
             <div id="brand-image-text">
               <%= link_to truncate(specbrands.name, length: 28), specbrands, :class => "brand-text" %>
@@ -207,12 +216,12 @@
 <br>
 
         <!-- Insert Categories here -->
-        <% @specifics_mob = Specific.where(:subcategory_id => @subcategory.id).page(params[:page]).per(8)%>
+        <% @specifics_mob = Specific.where(:subcategory_id => @subcategory.id).page(params[:page]).per(9)%>
         <!-- .paginate(:page => params[:page], :per_page => 8) %> -->
 
-        <h3>Subcategories</h3>
+        <h3 id="subcateg_attri">Subcategories</h3>
         <% @specifics_mob.each do |specifics_mob| %>
-          <div class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
+          <div class="col-md-3 col-sm-4 col-xs-4 product-list-item body_categ" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
             <div class="panel panel-default" id="panel-default-id">
               <div class="panel-body text-center product-body" id="panel-body-mobile">
                 <%= link_to (image_tag specifics_mob.image_specific.url(:thumb), :size => "100x100"), specifics_mob %>

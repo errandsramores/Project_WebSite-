@@ -221,7 +221,7 @@
     <div id="categ-subcateg-mobile">
 
         <!-- Insert Categories here -->
-        <% @subcategories_mob = Subcategory.where(:category_id => @category.id).page(params[:page]).per(8)%>
+        <% @subcategories_mob = Subcategory.where(:category_id => @category.id).page(params[:page]).per(9)%>
         <!-- .paginate(:page => params[:page], :per_page => 8) %> -->
 
         <h3 id="subcateg_attri">Subcategories</h3>
