@@ -4,7 +4,10 @@
   .categ-all-mobile {
     width: 100%;
   }
-
+  .row {
+      margin-left: 0px;
+      margin-right: 0px;
+  }
   .categ-brands {
     width:90%;
   }
@@ -172,7 +175,7 @@
 <body class="two-col" id="home-page" data-hook="body" style="">
 <div class="categ-all-mobile">
   <div class="Categ-icon">
-  
+
   </div>
 
 <div class="brands_subcat">
@@ -183,7 +186,7 @@
 
         <h3>Brands</h3>
         <% @brands_mob.each do |brands_mob| %>
-          <div class="col-md-3 col-sm-6 col-xs-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
+          <div class="col-md-3 col-sm-4 col-xs-4 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product" id="icon-hover">
             <div class="panel panel-default" id="panel-default-id">
               <div class="panel-body text-center product-body" id="panel-body-mobile">
                 <%= link_to (image_tag brands_mob.image_brand.url(:thumb), :size => "100x100"), brands_mob %>
